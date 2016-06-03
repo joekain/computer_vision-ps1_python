@@ -5,9 +5,10 @@ import heapq
 
 def hough_line_acc(hs, x, y):
     for degrees in range(360):
-       theta = math.pi * degrees / 180;
+       theta = math.pi * degrees / 180
        rho = x * math.cos(theta) + y * math.sin(theta)
-       hs[math.floor(rho / 4), degrees] += 1
+       if rho >= 0:
+           hs[int(rho / 4), degrees] += 1
 
 def hough_lines_acc(edges):
     "Accumulates Hough lines"
